@@ -43,10 +43,22 @@ def health_check():
 
 @api_bp.get("/metadata")
 def metadata():
-    return jsonify({
-        "status": "working",
-        "message": "API is running"
-    })
+    try:
+        repository_instance, model_service_instance, _, _, _ = get_services()
+
+        return jsonify({
+            "supported_states": repository_instance.get_state_list(),
+            "districts_by_state": repository_instance.get_districts_by_state(),
+            "crops_by_district": repository_instance.get_crops_by_district(),
+            "supported_crops": repository_instance.get_supported_crops(),
+            "model_metrics": model_service_instance.metrics,
+            "feature_importance": model_service_instance.get_feature_importance(),
+        })
+
+    except Exception as e:
+        return jsonify({
+            "error": str(e)
+        }), 500
 
 
 @api_bp.get("/analytics")
