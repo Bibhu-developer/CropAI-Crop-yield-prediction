@@ -1,0 +1,23 @@
+[
+  {
+    "model_name": "random_forest",
+    "r2_score": 0.9493,
+    "rmse": 389.8779,
+    "cv_r2_mean": 0.953,
+    "cv_rmse_mean": 314.2612
+  },
+  {
+    "model_name": "gradient_boosting",
+    "r2_score": 0.9056,
+    "rmse": 531.9232,
+    "cv_r2_mean": 0.9478,
+    "cv_rmse_mean": 331.4638
+  },
+  {
+    "model_name": "xgboost",
+    "r2_score": 0.9635,
+    "rmse": 330.7347,
+    "cv_r2_mean": 0.968,
+    "cv_rmse_mean": 259.2511
+  }
+]
