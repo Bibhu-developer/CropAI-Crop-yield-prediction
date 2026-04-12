@@ -10,8 +10,11 @@ import pandas as pd
 class CropRecommendationService:
     def __init__(self, model_dir: Path) -> None:
         self.model_path = model_dir / "crop_model.pkl"
+        self.legacy_model_path = model_dir / "model.pkl"
         self.encoders_path = model_dir / "encoders.pkl"
+        self.legacy_encoders_path = model_dir / "encoder.pkl"
         self.metrics_path = model_dir / "crop_model_metrics.json"
+        self.legacy_metrics_path = model_dir / "metrics.json"
         self._model = None
         self._assets = None
         self._feature_ranges = None
@@ -55,12 +58,17 @@ class CropRecommendationService:
     }
 
     def load_assets(self) -> None:
-        if not self.model_path.exists() or not self.encoders_path.exists():
+        resolved_model_path = self.model_path if self.model_path.exists() else self.legacy_model_path
+        resolved_encoder_path = (
+            self.encoders_path if self.encoders_path.exists() else self.legacy_encoders_path
+        )
+
+        if not resolved_model_path.exists() or not resolved_encoder_path.exists():
             raise FileNotFoundError(
                 "Crop recommendation model assets are missing. Run backend/scripts/train_crop_recommendation_model.py first."
             )
-        self._model = joblib.load(self.model_path)
-        self._assets = joblib.load(self.encoders_path)
+        self._model = joblib.load(resolved_model_path)
+        self._assets = joblib.load(resolved_encoder_path)
 
     @property
     def model(self):

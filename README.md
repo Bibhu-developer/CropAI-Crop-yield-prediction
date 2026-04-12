@@ -542,7 +542,7 @@ In Render:
 3. If entering manually, use:
 
 - Root Directory: `backend`
-- Build Command: `pip install -r requirements.txt`
+- Build Command: `pip install -r requirements.txt && python scripts/preprocess_data.py && python scripts/train_model.py && python scripts/generate_district_soil_map.py && python scripts/train_crop_recommendation_model.py`
 - Start Command: `gunicorn --bind 0.0.0.0:$PORT wsgi:app`
 
 Set these environment variables in Render:
@@ -584,8 +584,9 @@ If you want both local development and production to work at the same time, use:
 ### 5. Important Deployment Notes
 
 - Render free services can sleep after inactivity, so the first backend request may take a little longer.
-- The backend uses local model files from `backend/models`, so keep those files committed in the repository.
-- The backend also depends on `backend/data/district_soil_map.json`, so keep that file committed too.
+- The backend root URL now responds with a simple status message. The actual API endpoints are still under `/api/...`.
+- Do not depend on locally generated `.joblib` files being pushed from your laptop. This project ignores them in Git, and `yield_model.joblib` is too large to treat as a normal source file. Render should generate the required assets during the build step.
+- The backend still depends on the source datasets in `backend/data`, so keep those files committed.
 - If the weather API key is missing, the recommendation module may return degraded output instead of full real-time recommendations.
 
 ### 6. Quick Deployment Checklist

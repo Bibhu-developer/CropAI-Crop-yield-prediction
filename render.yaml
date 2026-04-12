@@ -3,7 +3,7 @@ services:
     name: cropai-backend
     runtime: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && python scripts/preprocess_data.py && python scripts/train_model.py && python scripts/generate_district_soil_map.py && python scripts/train_crop_recommendation_model.py
     startCommand: gunicorn --bind 0.0.0.0:$PORT wsgi:app
     envVars:
       - key: PYTHON_VERSION
