@@ -1,14 +1,5 @@
 [
   {
-    "timestamp": "2026-04-05T06:00:52.340503",
-    "state_name": "Tamil Nadu",
-    "district_name": "Madurai",
-    "crop_name": "Castor",
-    "area_hectares": 0.1,
-    "predicted_yield_kg_per_hectare": 500.23,
-    "total_yield_tons": 0.05
-  },
-  {
     "timestamp": "2026-04-05T06:01:04.409406",
     "state_name": "Tamil Nadu",
     "district_name": "Thirunelveli",
@@ -178,5 +169,14 @@
     "area_hectares": 0.1,
     "predicted_yield_kg_per_hectare": 2379.85,
     "total_yield_tons": 0.24
+  },
+  {
+    "timestamp": "2026-04-12T07:48:39.330987",
+    "state_name": "Orissa",
+    "district_name": "Bolangir",
+    "crop_name": "Oilseeds",
+    "area_hectares": 0.1,
+    "predicted_yield_kg_per_hectare": 1145.43,
+    "total_yield_tons": 0.11
   }
 ]

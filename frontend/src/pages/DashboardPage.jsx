@@ -1,5 +1,5 @@
 import { lazy, Suspense, useMemo, useState } from "react";
-import { AlertTriangle, RefreshCw } from "lucide-react";
+import { AlertTriangle, Github, Instagram, Linkedin, RefreshCw } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import PredictionForm from "../components/PredictionForm";
 import ResultPanel from "../components/ResultPanel";
@@ -153,6 +153,35 @@ function DashboardPage({ metadata, analytics, loading, bootError, refreshAnalyti
 
         <footer className="page-footer">
           <span>Developed with ❤️ by Bibhu</span>
+          <div className="footer-socials">
+            <a
+              className="social-link linkedin"
+              href="https://www.linkedin.com/in/yajnadatta-pattanayak/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              className="social-link github"
+              href="https://github.com/Bibhu-developer"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub profile"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              className="social-link instagram"
+              href="https://www.instagram.com/yajnadatta_pattanayak/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram profile"
+            >
+              <Instagram size={18} />
+            </a>
+          </div>
         </footer>
       </section>
     </main>
